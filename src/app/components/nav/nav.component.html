@@ -1,0 +1,22 @@
+<ion-header>
+  <ion-toolbar color="tertiary">
+
+    <ion-buttons slot="end">
+      <ion-button (click)="salir()">
+        <ion-icon 
+        color="danger"
+        slot="icon-only" 
+        name="exit-outline"></ion-icon>
+      </ion-button>
+  </ion-buttons>
+
+    <ion-item color="tertiary" lines="none">
+      <ion-avatar slot="start" >
+        <img alt="Silhouette of a person's head" src="https://ionicframework.com/docs/img/demos/avatar.svg" />
+      </ion-avatar>
+      <ion-label *ngFor="let x of usuarios">
+        <h2>{{ x.NOMBRE }} {{ x.APELLIDO }}</h2>
+      </ion-label>
+    </ion-item>
+  </ion-toolbar>
+</ion-header>

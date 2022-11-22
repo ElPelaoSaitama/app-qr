@@ -1,0 +1,119 @@
+<ion-content>
+
+  <!-- Slider con imagenes y texto -->
+  <ion-slides pager="true">
+    <ion-slide *ngFor="let slide of slides">
+      <div class="slide-img-padding">
+        <img [src]="slide.img" alt="">
+      </div>
+      <div>
+        <h3 [innerHTML]="slide.titulo"></h3>
+      </div>
+    </ion-slide>
+  </ion-slides>
+
+<!-- Modal inicio de sesion -->
+  <ion-modal #modal trigger="open-modal">
+    <ng-template>
+      <ion-content class="color-fondo">
+        <ion-toolbar>
+          <ion-row class="ion-justify-content-center">
+            <h1 class="tittle">Iniciar Sesión</h1>
+          </ion-row>
+        </ion-toolbar>
+
+          <div class="ion-padding">
+          <ion-item class="ion-margin-top" >
+            <ion-label position="floating">Correo</ion-label>
+            <ion-input [(ngModel)]="mdl_correo" type="email"></ion-input>
+          </ion-item>
+      
+          <ion-item class="ion-margin-top">
+            <ion-label position="floating">Contraseña</ion-label>
+            <ion-input [(ngModel)]="mdl_contrasena" type="password"></ion-input>
+          </ion-item>
+
+          <ion-row class="ion-justify-content-center ion-margin-top" sizeMd="4" offsetMd="4">
+            <ion-button color="success" class="ion-margin-left" shape="round" (click)="iniciarSesion()">Confirmar</ion-button>
+            <ion-button color="danger" class="ion-margin-right" shape="round" (click)="modal.dismiss()">Cancelar</ion-button>
+            <!-- No implementado aun, la idea es que al precionar se abra el modal respectivo -->
+            <p><a href="">No tienes cuenta?</a></p>
+          </ion-row>
+        </div>
+      </ion-content>
+    </ng-template>
+  </ion-modal>
+
+  <!-- Modal Registro -->
+  <ion-modal #modal trigger="open-modal2">
+    <ng-template>
+      <ion-content class="color-fondo">
+        <ion-toolbar>
+          <ion-row class="ion-justify-content-center">
+            <h1 class="tittle">Registro</h1>
+          </ion-row>
+        </ion-toolbar>
+
+          <div class="ion-padding">
+          <ion-item class="ion-margin-top" >
+            <ion-label position="floating">Correo</ion-label>
+            <ion-input [(ngModel)]="mdl_correoRegister" type="email"></ion-input>
+          </ion-item>
+      
+          <ion-item class="ion-margin-top">
+            <ion-label position="floating">Contraseña</ion-label>
+            <ion-input [(ngModel)]="mdl_contrasenaRegister" type="password"></ion-input>
+          </ion-item>
+
+          <ion-item class="ion-margin-top">
+            <ion-label position="floating">Nombre</ion-label>
+            <ion-input [(ngModel)]="mdl_nombre" type="text"></ion-input>
+          </ion-item>
+
+          <ion-item class="ion-margin-top">
+            <ion-label position="floating">Apellido</ion-label>
+            <ion-input [(ngModel)]="mdl_apellido" type="text"></ion-input>
+          </ion-item>
+
+          <ion-row class="ion-justify-content-center ion-margin-top">
+            <ion-button color="success" class="ion-margin-left" shape="round" (click)="registroUser()">Confirmar</ion-button>
+            <ion-button color="danger" class="ion-margin-right" shape="round" (click)="cancel()">Cancelar</ion-button>
+            <!-- No implementado aun, la idea es que al precionar se abra el modal respectivo -->
+            <p><a href="">Ya tienes una cuenta?</a></p>
+          </ion-row>
+        </div>
+      </ion-content>
+    </ng-template>
+  </ion-modal>
+
+</ion-content>
+
+<ion-footer no-border>
+
+  <ion-grid>
+    <ion-row>
+      <ion-col size="10" offset="1">
+        <ion-button color="primary"
+                    id="open-modal"
+                    expand="full"
+                    shape="round"
+                    class="btn-primary">
+                  Iniciar Sesión
+        </ion-button>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col size="10" offset="1">
+        <ion-button expand="full"
+                    id="open-modal2"
+                    fill="clear"
+                    shape="round"
+                    class="btn-primary btn-register">
+                  Registrate
+        </ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+</ion-footer>

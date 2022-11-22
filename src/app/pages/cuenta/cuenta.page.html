@@ -1,0 +1,37 @@
+<app-nav></app-nav>
+
+<ion-content>
+
+  <div class="ion-padding div-card">
+    <ion-card class="color-card">
+      <ion-card-header class="ion-text-center">
+        <ion-card-title>Restablecer contraseña </ion-card-title>
+      </ion-card-header>
+
+
+      <ion-card-content>
+        <ion-item class="inputRedondo">
+          <ion-label position="floating">Correo</ion-label>
+          <ion-input disabled [(ngModel)]="mdl_correo"></ion-input>
+        </ion-item>
+
+
+        <ion-item class="ion-margin-top inputRedondo">
+          <ion-label position="floating">Contraseña nueva </ion-label>
+          <ion-input [(ngModel)]="mdl_contrasenaNueva" type="password"></ion-input>
+        </ion-item>
+
+
+        <ion-item class="ion-margin-top inputRedondo">
+          <ion-label position="floating">Contraseña actual </ion-label>
+          <ion-input [(ngModel)]="mdl_contrasenaActual" type="password"></ion-input>
+        </ion-item>
+
+      </ion-card-content>
+      <ion-row class="ion-justify-content-center">
+        <ion-button (click)="cambioDeContrasena()" class="centrar ion-margin-bottom" shape="round">Aceptar</ion-button>
+      </ion-row>
+    </ion-card>
+  </div>
+
+</ion-content>

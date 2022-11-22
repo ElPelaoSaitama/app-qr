@@ -1,0 +1,35 @@
+<app-nav></app-nav>
+
+<ion-content color="">
+
+    <ion-refresher slot="fixed" (ionRefresh)="handleRefresh($event)">
+        <ion-refresher-content></ion-refresher-content>
+      </ion-refresher>
+
+    <h2 class="ion-text-center">Ultimos Sismos en Chile</h2>
+    <ion-grid>
+    <ion-row>
+        <ion-col sizeMd="4" offsetMd="4">
+        <ion-card *ngFor="let s of sismos" color="light">
+            <ion-card-header>
+                <ion-card-title>{{s.RefGeografica}}</ion-card-title>
+                <ion-card-subtitle>{{s.Fecha}}</ion-card-subtitle>
+            </ion-card-header>
+            
+            <ion-card-content>
+                <ion-item>
+                    <ion-label>Magnitud: {{s.Magnitud}}</ion-label>
+                    <ion-label>Profundidad: {{s.Profundidad}}</ion-label>
+                </ion-item>
+            </ion-card-content>
+            </ion-card>
+        </ion-col>
+    </ion-row>
+    </ion-grid>
+
+
+
+
+
+    
+</ion-content>
