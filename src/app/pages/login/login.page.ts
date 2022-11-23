@@ -27,7 +27,7 @@ export class LoginPage implements OnInit {
     private toastController: ToastController,
     private loadingController: LoadingController,
     private api: ApiService,
-    private dbService: DbService) { }
+    private db: DbService) { }
 
   ngOnInit() {
     localStorage.removeItem('correo');
@@ -80,6 +80,7 @@ export class LoginPage implements OnInit {
             localStorage.setItem('correo', this.mdl_correo)
             this.router.navigate(['tabs/cuenta'])
             console.log(localStorage.getItem('correo'))
+            this.db.sesionActiva();
             that.limpiar();
             that.cancel();
           }else{

@@ -57,16 +57,6 @@ export class ScanQrPage implements OnInit{
     }
   }
 
-  //Toast para mostrar mensaje
-  async presentToast(mensaje){
-    const toast = await this.toastController.create({
-      message: mensaje,
-      duration: 2000,
-      position: 'bottom'
-    });
-    await toast.present();
-  }
-
   validarQR(){
     let that = this;
     this.loadingController.create({
@@ -77,15 +67,14 @@ export class ScanQrPage implements OnInit{
       try{
         let respuesta = await this.api.asistencia(that.mdl_correo, that.cod_clase);
         if(respuesta['result'][0].RESPUESTA == 'OK'){
-          that.presentToast('Asistencia registrada exitosamente!');
-          that.presentToast('Presente en ' + that.nom_clase);
+          that.presentToast('Asistencia registrada en ' + that.nom_clase, 'checkmark-circle-outline', 'success');
         }else{
-          that.presentToast('Usted ya se encuentra presente');
+          that.presentToast('Usted ya se encuentra presente', 'close-circle-outline', 'warning');
         }
       }catch(error){
         let respuesta = await this.api.asistencia(that.mdl_correo, that.cod_clase);
         if(respuesta['result'][0].RESPUESTA =='ERR03'){
-          that.presentToast('Error Login');
+          that.presentToast('Error QR', 'close-circle-outline', 'danger');
         }
       }
       data.dismiss();
@@ -96,7 +85,27 @@ export class ScanQrPage implements OnInit{
     //this.api.ruta + '?nombreFuncion=EliminarAsistencia&correo=' + localStorage.getItem('correo');
     console.log(this.api.ruta + '?nombreFuncion=EliminarAsistencia&correo=' + localStorage.getItem('correo'))
     this.api.delAsistencia();
-    this.presentToast('Datos eliminados');
+    this.presentToast('Datos eliminados', 'trash-outline', 'danger');
+    this.cod_clase = "";
+    this.nom_clase ="";
   }
+  
+    //Toast para mostrar mensaje
+    async presentToast(mensaje, icon, color){
+      const toast = await this.toastController.create({
+        message: mensaje,
+        duration: 4000,
+        position: 'bottom',
+        icon: icon,
+        color: color,
+        buttons: [
+          {
+            text: 'Aceptar',
+            role: 'cancel'
+          }
+        ],
+      });
+      await toast.present();
+    }
   
 }

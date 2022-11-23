@@ -45,6 +45,7 @@ export class NavComponent implements OnInit {
           localStorage.removeItem('ingresado');
           localStorage.removeItem('correo');
           this.router.navigate(['login']);
+          this.db.sesionDesactivada();
         }
       }
     ]
