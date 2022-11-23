@@ -81,8 +81,7 @@ export class ScanQrPage implements OnInit{
     });
   }
 
-  borrar(){ //debe ser un metodo get
-    //this.api.ruta + '?nombreFuncion=EliminarAsistencia&correo=' + localStorage.getItem('correo');
+  borrar(){ 
     console.log(this.api.ruta + '?nombreFuncion=EliminarAsistencia&correo=' + localStorage.getItem('correo'))
     this.api.delAsistencia();
     this.presentToast('Datos eliminados', 'trash-outline', 'danger');
